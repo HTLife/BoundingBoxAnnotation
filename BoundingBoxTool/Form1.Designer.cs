@@ -88,10 +88,11 @@
             // lbl_folder_desc
             // 
             this.lbl_folder_desc.AutoSize = true;
-            this.lbl_folder_desc.Location = new System.Drawing.Point(719, 18);
+            this.lbl_folder_desc.Location = new System.Drawing.Point(32, 67);
             this.lbl_folder_desc.Name = "lbl_folder_desc";
-            this.lbl_folder_desc.Size = new System.Drawing.Size(0, 12);
+            this.lbl_folder_desc.Size = new System.Drawing.Size(57, 12);
             this.lbl_folder_desc.TabIndex = 3;
+            this.lbl_folder_desc.Text = "[N] Images";
             // 
             // lbl_cur_image
             // 
@@ -105,7 +106,7 @@
             // lbl_progress
             // 
             this.lbl_progress.AutoSize = true;
-            this.lbl_progress.Location = new System.Drawing.Point(33, 79);
+            this.lbl_progress.Location = new System.Drawing.Point(33, 82);
             this.lbl_progress.Name = "lbl_progress";
             this.lbl_progress.Size = new System.Drawing.Size(47, 12);
             this.lbl_progress.TabIndex = 5;
@@ -114,7 +115,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 45);
+            this.label1.Location = new System.Drawing.Point(35, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 12);
             this.label1.TabIndex = 6;
@@ -123,7 +124,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 45);
+            this.label2.Location = new System.Drawing.Point(89, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(524, 12);
             this.label2.TabIndex = 7;
@@ -133,7 +134,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(89, 59);
+            this.label3.Location = new System.Drawing.Point(89, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(652, 12);
             this.label3.TabIndex = 8;
@@ -246,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 615);
+            this.ClientSize = new System.Drawing.Size(789, 615);
             this.Controls.Add(this.checkBoxDifficult);
             this.Controls.Add(this.checkBoxTruncated);
             this.Controls.Add(this.rbn_black);
@@ -268,7 +269,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BoundingBoxTool";
+            this.Text = "GTBBT - Ground Truth bounding box tool v1.0 (20170506)";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_img)).EndInit();
             this.ResumeLayout(false);
