@@ -661,5 +661,29 @@ namespace BoundingBoxTool
             }
             pcb_img.Focus();
         }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            DisplayNewImage();
+        }
+        protected override void WndProc(ref Message m)
+        {
+            FormWindowState previousWindowState = this.WindowState;
+
+            base.WndProc(ref m);
+
+            FormWindowState currentWindowState = this.WindowState;
+
+            if (previousWindowState != currentWindowState && currentWindowState == FormWindowState.Maximized)
+            {
+                // TODO: Do something the window has been maximized
+                DisplayNewImage();
+            }
+            if (previousWindowState != currentWindowState && currentWindowState == FormWindowState.Normal)
+            {
+                // TODO: Do something the window has been maximized
+                DisplayNewImage();
+            }
+        }
     }
 }

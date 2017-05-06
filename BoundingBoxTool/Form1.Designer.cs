@@ -224,7 +224,7 @@
             // checkBoxTruncated
             // 
             this.checkBoxTruncated.AutoSize = true;
-            this.checkBoxTruncated.Location = new System.Drawing.Point(181, 78);
+            this.checkBoxTruncated.Location = new System.Drawing.Point(230, 78);
             this.checkBoxTruncated.Name = "checkBoxTruncated";
             this.checkBoxTruncated.Size = new System.Drawing.Size(105, 16);
             this.checkBoxTruncated.TabIndex = 16;
@@ -235,7 +235,7 @@
             // checkBoxDifficult
             // 
             this.checkBoxDifficult.AutoSize = true;
-            this.checkBoxDifficult.Location = new System.Drawing.Point(181, 95);
+            this.checkBoxDifficult.Location = new System.Drawing.Point(230, 95);
             this.checkBoxDifficult.Name = "checkBoxDifficult";
             this.checkBoxDifficult.Size = new System.Drawing.Size(98, 16);
             this.checkBoxDifficult.TabIndex = 17;
@@ -271,6 +271,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GTBBT - Ground Truth bounding box tool v1.1 (20170506)";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
