@@ -78,7 +78,7 @@ namespace BoundingBoxTool
                     {
                         string lineStr = reader.ReadLine();
                         string[] values = lineStr.Split(',');
-                        if (values != null && values.Length == 6)
+                        if (values != null && values.Length == 8)
                         {
                             int iLeft = Convert.ToInt32(values[0]);
                             int iTop = Convert.ToInt32(values[1]);
@@ -127,9 +127,10 @@ namespace BoundingBoxTool
                 {
                     foreach (Rectangle rect in curBBX)
                     {
-                        writer.WriteLine("{0},{1},{2},{3},{4},{5}", 
+                        writer.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7}", 
                             rect.Left, rect.Top, rect.Left + rect.Width, rect.Top + rect.Height,
-                            Convert.ToInt32(isTruncated), Convert.ToInt32(isDifficult));
+                            Convert.ToInt32(isTruncated), Convert.ToInt32(isDifficult),
+                            curImg.Size.Width, curImg.Size.Height);
                         writer.Flush();
                     }
                 }

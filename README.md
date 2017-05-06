@@ -3,6 +3,9 @@
 
 ![sample.jpg](https://github.com/HTLife/BoundingBoxAnnotation/blob/master/pic/sample.jpg?raw=true)
 
+## Output CSV format
+BLeft, BTop, BRight, BBottom, isTruncated, isDifficult, ImgWidth, ImgHeight
+
 ## How to use?
 
 ### Hot key
