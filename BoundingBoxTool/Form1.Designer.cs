@@ -45,6 +45,8 @@
             this.rbn_green = new System.Windows.Forms.RadioButton();
             this.rbn_yellow = new System.Windows.Forms.RadioButton();
             this.rbn_black = new System.Windows.Forms.RadioButton();
+            this.checkBoxTruncated = new System.Windows.Forms.CheckBox();
+            this.checkBoxDifficult = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_img)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +69,7 @@
             // 
             // btn_folder_select
             // 
-            this.btn_folder_select.Location = new System.Drawing.Point(679, 18);
+            this.btn_folder_select.Location = new System.Drawing.Point(554, 12);
             this.btn_folder_select.Name = "btn_folder_select";
             this.btn_folder_select.Size = new System.Drawing.Size(62, 23);
             this.btn_folder_select.TabIndex = 1;
@@ -78,15 +80,15 @@
             // txt_folder
             // 
             this.txt_folder.Enabled = false;
-            this.txt_folder.Location = new System.Drawing.Point(179, 20);
+            this.txt_folder.Location = new System.Drawing.Point(35, 12);
             this.txt_folder.Name = "txt_folder";
-            this.txt_folder.Size = new System.Drawing.Size(486, 22);
+            this.txt_folder.Size = new System.Drawing.Size(513, 22);
             this.txt_folder.TabIndex = 2;
             // 
             // lbl_folder_desc
             // 
             this.lbl_folder_desc.AutoSize = true;
-            this.lbl_folder_desc.Location = new System.Drawing.Point(844, 24);
+            this.lbl_folder_desc.Location = new System.Drawing.Point(719, 18);
             this.lbl_folder_desc.Name = "lbl_folder_desc";
             this.lbl_folder_desc.Size = new System.Drawing.Size(0, 12);
             this.lbl_folder_desc.TabIndex = 3;
@@ -94,23 +96,25 @@
             // lbl_cur_image
             // 
             this.lbl_cur_image.AutoSize = true;
-            this.lbl_cur_image.Location = new System.Drawing.Point(525, 691);
+            this.lbl_cur_image.Location = new System.Drawing.Point(33, 96);
             this.lbl_cur_image.Name = "lbl_cur_image";
-            this.lbl_cur_image.Size = new System.Drawing.Size(0, 12);
+            this.lbl_cur_image.Size = new System.Drawing.Size(49, 12);
             this.lbl_cur_image.TabIndex = 4;
+            this.lbl_cur_image.Text = "FileName";
             // 
             // lbl_progress
             // 
             this.lbl_progress.AutoSize = true;
-            this.lbl_progress.Location = new System.Drawing.Point(383, 690);
+            this.lbl_progress.Location = new System.Drawing.Point(33, 79);
             this.lbl_progress.Name = "lbl_progress";
-            this.lbl_progress.Size = new System.Drawing.Size(0, 12);
+            this.lbl_progress.Size = new System.Drawing.Size(47, 12);
             this.lbl_progress.TabIndex = 5;
+            this.lbl_progress.Text = "Progress:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 57);
+            this.label1.Location = new System.Drawing.Point(33, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 12);
             this.label1.TabIndex = 6;
@@ -119,7 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 58);
+            this.label2.Location = new System.Drawing.Point(89, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(524, 12);
             this.label2.TabIndex = 7;
@@ -129,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(89, 82);
+            this.label3.Location = new System.Drawing.Point(89, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(652, 12);
             this.label3.TabIndex = 8;
@@ -138,7 +142,7 @@
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(747, 18);
+            this.btn_update.Location = new System.Drawing.Point(622, 12);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(75, 23);
             this.btn_update.TabIndex = 9;
@@ -148,7 +152,7 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(882, 91);
+            this.btn_delete.Location = new System.Drawing.Point(456, 79);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 10;
@@ -158,7 +162,7 @@
             // 
             // btn_openpath
             // 
-            this.btn_openpath.Location = new System.Drawing.Point(772, 91);
+            this.btn_openpath.Location = new System.Drawing.Point(346, 79);
             this.btn_openpath.Name = "btn_openpath";
             this.btn_openpath.Size = new System.Drawing.Size(104, 23);
             this.btn_openpath.TabIndex = 11;
@@ -171,7 +175,7 @@
             this.rbn_red.AutoSize = true;
             this.rbn_red.Checked = true;
             this.rbn_red.ForeColor = System.Drawing.Color.Red;
-            this.rbn_red.Location = new System.Drawing.Point(718, 54);
+            this.rbn_red.Location = new System.Drawing.Point(545, 86);
             this.rbn_red.Name = "rbn_red";
             this.rbn_red.Size = new System.Drawing.Size(42, 16);
             this.rbn_red.TabIndex = 12;
@@ -184,7 +188,7 @@
             // 
             this.rbn_green.AutoSize = true;
             this.rbn_green.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.rbn_green.Location = new System.Drawing.Point(763, 55);
+            this.rbn_green.Location = new System.Drawing.Point(593, 86);
             this.rbn_green.Name = "rbn_green";
             this.rbn_green.Size = new System.Drawing.Size(51, 16);
             this.rbn_green.TabIndex = 13;
@@ -196,7 +200,7 @@
             // 
             this.rbn_yellow.AutoSize = true;
             this.rbn_yellow.ForeColor = System.Drawing.Color.Gold;
-            this.rbn_yellow.Location = new System.Drawing.Point(820, 55);
+            this.rbn_yellow.Location = new System.Drawing.Point(650, 86);
             this.rbn_yellow.Name = "rbn_yellow";
             this.rbn_yellow.Size = new System.Drawing.Size(56, 16);
             this.rbn_yellow.TabIndex = 14;
@@ -207,7 +211,7 @@
             // rbn_black
             // 
             this.rbn_black.AutoSize = true;
-            this.rbn_black.Location = new System.Drawing.Point(881, 55);
+            this.rbn_black.Location = new System.Drawing.Point(712, 86);
             this.rbn_black.Name = "rbn_black";
             this.rbn_black.Size = new System.Drawing.Size(50, 16);
             this.rbn_black.TabIndex = 15;
@@ -216,11 +220,35 @@
             this.rbn_black.UseVisualStyleBackColor = true;
             this.rbn_black.CheckedChanged += new System.EventHandler(this.rbn_black_CheckedChanged);
             // 
+            // checkBoxTruncated
+            // 
+            this.checkBoxTruncated.AutoSize = true;
+            this.checkBoxTruncated.Location = new System.Drawing.Point(181, 78);
+            this.checkBoxTruncated.Name = "checkBoxTruncated";
+            this.checkBoxTruncated.Size = new System.Drawing.Size(105, 16);
+            this.checkBoxTruncated.TabIndex = 16;
+            this.checkBoxTruncated.Text = "Truncated 【T】";
+            this.checkBoxTruncated.UseVisualStyleBackColor = true;
+            this.checkBoxTruncated.CheckedChanged += new System.EventHandler(this.checkBoxTruncated_CheckedChanged);
+            // 
+            // checkBoxDifficult
+            // 
+            this.checkBoxDifficult.AutoSize = true;
+            this.checkBoxDifficult.Location = new System.Drawing.Point(181, 95);
+            this.checkBoxDifficult.Name = "checkBoxDifficult";
+            this.checkBoxDifficult.Size = new System.Drawing.Size(98, 16);
+            this.checkBoxDifficult.TabIndex = 17;
+            this.checkBoxDifficult.Text = "Difficult 【D】";
+            this.checkBoxDifficult.UseVisualStyleBackColor = true;
+            this.checkBoxDifficult.CheckedChanged += new System.EventHandler(this.checkBoxDifficult_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 629);
+            this.ClientSize = new System.Drawing.Size(787, 615);
+            this.Controls.Add(this.checkBoxDifficult);
+            this.Controls.Add(this.checkBoxTruncated);
             this.Controls.Add(this.rbn_black);
             this.Controls.Add(this.rbn_yellow);
             this.Controls.Add(this.rbn_green);
@@ -238,10 +266,10 @@
             this.Controls.Add(this.btn_folder_select);
             this.Controls.Add(this.pcb_img);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BoundingBoxTool";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -266,6 +294,8 @@
         private System.Windows.Forms.RadioButton rbn_green;
         private System.Windows.Forms.RadioButton rbn_yellow;
         private System.Windows.Forms.RadioButton rbn_black;
+        private System.Windows.Forms.CheckBox checkBoxTruncated;
+        private System.Windows.Forms.CheckBox checkBoxDifficult;
     }
 }
 

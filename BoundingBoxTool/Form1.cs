@@ -27,12 +27,18 @@ namespace BoundingBoxTool
         private bool isProcessed = false;
         private Color bbxColor = Color.Red;
 
+        private bool isTruncated = false;
+        private bool isDifficult = false;
+
         public Form1()
         {
             InitializeComponent();
             txt_folder.Text = FolderSelectDetaultTip;
             lbl_folder_desc.Text = "";
-            pcb_img.Anchor = AnchorStyles.Bottom;
+            pcb_img.Anchor = AnchorStyles.Bottom |
+                AnchorStyles.Left |
+                AnchorStyles.Right |
+                AnchorStyles.Top;
         }
 
         private bool ValidImageIndex()
@@ -71,13 +77,34 @@ namespace BoundingBoxTool
                     while (!reader.EndOfStream)
                     {
                         string lineStr = reader.ReadLine();
-                        string[] values = lineStr.Split(' ');
-                        if (values != null && values.Length == 4)
+                        string[] values = lineStr.Split(',');
+                        if (values != null && values.Length == 6)
                         {
-                            curBBX.Add(new Rectangle(Convert.ToInt32(values[0]),
-                                Convert.ToInt32(values[1]),
-                                Convert.ToInt32(values[2]),
-                                Convert.ToInt32(values[3])));
+                            int iLeft = Convert.ToInt32(values[0]);
+                            int iTop = Convert.ToInt32(values[1]);
+                            int iWidth = Convert.ToInt32(values[2]) - iLeft;
+                            int iHeight = Convert.ToInt32(values[3]) - iTop;
+
+                            curBBX.Add(new Rectangle(iLeft,
+                                iTop,
+                                iWidth,
+                                iHeight));
+
+                            int iTruncatedFlag = Convert.ToInt32(values[4]);
+                            int iDifficultFlag = Convert.ToInt32(values[5]);
+                            isTruncated = false;
+                            if (1 == iTruncatedFlag)
+                            {
+                                isTruncated = true;
+                            }
+                            checkBoxTruncated.Checked = isTruncated;
+
+                            isDifficult = false;
+                            if (1 == iDifficultFlag)
+                            {
+                                isDifficult = true;
+                            }
+                            checkBoxDifficult.Checked = isDifficult;
                         }
                     }
                 }
@@ -100,7 +127,9 @@ namespace BoundingBoxTool
                 {
                     foreach (Rectangle rect in curBBX)
                     {
-                        writer.WriteLine("{0} {1} {2} {3}", rect.Left, rect.Top, rect.Width, rect.Height);
+                        writer.WriteLine("{0},{1},{2},{3},{4},{5}", 
+                            rect.Left, rect.Top, rect.Left + rect.Width, rect.Top + rect.Height,
+                            Convert.ToInt32(isTruncated), Convert.ToInt32(isDifficult));
                         writer.Flush();
                     }
                 }
@@ -119,7 +148,7 @@ namespace BoundingBoxTool
                 curBbxImg = curImg.Clone() as Image;
                 Graphics g = Graphics.FromImage(curBbxImg);
                 Brush brush = new SolidBrush(bbxColor);
-                Pen pen = new Pen(brush, 10);
+                Pen pen = new Pen(brush, 3);
                 pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Custom;
 
                 foreach (Rectangle rect in curBBX)
@@ -257,8 +286,17 @@ namespace BoundingBoxTool
             return tmpIndex;
         }
 
+        private void resetFlag()
+        {
+            isTruncated = false;
+            isDifficult = false;
+            checkBoxDifficult.Checked = false;
+            checkBoxTruncated.Checked = false; 
+        }
+
         private void pcb_img_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+            
             if (e.KeyCode == Keys.W)
             {
                 if (ValidImageIndex())
@@ -269,7 +307,7 @@ namespace BoundingBoxTool
                         return;
                     }
                 }
-
+                resetFlag();
                 if (MoreImagesAfter())
                 {
                     curImageIndex++;
@@ -280,7 +318,7 @@ namespace BoundingBoxTool
                     MessageBox.Show("all finished！");
                 }
             }
-            else if(e.KeyCode == Keys.Q)
+            else if (e.KeyCode == Keys.Q)
             {
                 if (ValidImageIndex())
                 {
@@ -290,7 +328,7 @@ namespace BoundingBoxTool
                         return;
                     }
                 }
-
+                resetFlag();
                 if (MoreImagesBefore())
                 {
                     curImageIndex--;
@@ -311,6 +349,7 @@ namespace BoundingBoxTool
                         return;
                     }
                 }
+                resetFlag();
                 int nextUnLabeledIndex = PreUnLabeled();
                 if (ValidImageIndex(nextUnLabeledIndex))
                 {
@@ -332,6 +371,7 @@ namespace BoundingBoxTool
                         return;
                     }
                 }
+                resetFlag();
                 int nextUnLabeledIndex = NextUnLabeled();
                 if (ValidImageIndex(nextUnLabeledIndex))
                 {
@@ -353,9 +393,35 @@ namespace BoundingBoxTool
                         return;
                     }
                 }
+                resetFlag();
                 curImageIndex = 0;
                 DisplayNewImage();
             }
+            else if (e.KeyCode == Keys.T)
+            {
+                if(checkBoxTruncated.Checked)
+                {
+                    checkBoxTruncated.Checked = false;
+                }
+                else
+                {
+                    checkBoxTruncated.Checked = true;
+                }
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                if (checkBoxDifficult.Checked)
+                {
+                    checkBoxDifficult.Checked = false;
+                }
+                else
+                {
+                    checkBoxDifficult.Checked = true;
+                    checkBoxTruncated.Checked = false;
+                }
+            }
+
+
         }
 
         private void pcb_img_MouseDown(object sender, MouseEventArgs e)
@@ -560,6 +626,39 @@ namespace BoundingBoxTool
         private void pcb_img_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxTruncated_CheckedChanged(object sender, EventArgs e)
+        {
+            isProcessed = true;
+            if (checkBoxTruncated.Checked)
+            {
+                isTruncated = true;
+            }
+            else
+            {
+                isTruncated = false;
+            }
+            pcb_img.Focus();
+        }
+
+        private void checkBoxDifficult_CheckedChanged(object sender, EventArgs e)
+        {
+            isProcessed = true;
+            if (checkBoxDifficult.Checked)
+            {
+                isDifficult = true;
+            }
+            else
+            { 
+                isDifficult = false;
+            }
+            pcb_img.Focus();
         }
     }
 }
