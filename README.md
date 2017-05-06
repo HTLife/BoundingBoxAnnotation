@@ -1,7 +1,7 @@
 # GTBBT (Ground Truth bounding box tool)
 >Image bounding box ground truth annotation tool written by C#
 
-![sample.jpg](.\pic\sample.jpg)
+![sample.jpg](https://github.com/HTLife/BoundingBoxAnnotation/blob/master/pic/sample.jpg?raw=true)
 
 ## How to use?
 
