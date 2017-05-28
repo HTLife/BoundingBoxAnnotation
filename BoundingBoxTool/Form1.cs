@@ -127,10 +127,12 @@ namespace BoundingBoxTool
                 {
                     foreach (Rectangle rect in curBBX)
                     {
+                        Image tmpImg = Image.FromFile(imgPathList[curImageIndex]);
+
                         writer.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7}", 
                             rect.Left, rect.Top, rect.Left + rect.Width, rect.Top + rect.Height,
                             Convert.ToInt32(isTruncated), Convert.ToInt32(isDifficult),
-                            curImg.Size.Width, curImg.Size.Height);
+                            tmpImg.Size.Width, tmpImg.Size.Height);
                         writer.Flush();
                     }
                 }
